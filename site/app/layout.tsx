@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="pt-BR" data-theme="light" className={`${fraunces.variable} ${inter.variable} light`} style={{ colorScheme: "light" }}>
       <body className="flex min-h-screen flex-col bg-white font-sans text-[#333333] antialiased">
         <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-[#162B4D] focus:px-5 focus:py-3 focus:font-semibold focus:text-white">
           Pular para o conteúdo

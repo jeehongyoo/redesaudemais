@@ -33,6 +33,8 @@
 }
 
 :root {
+  --foreground: #333333;
+  --background: #ffffff;
   --section-y: clamp(96px, 8vw, 128px);
 }
 
@@ -41,12 +43,22 @@
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
+/* Força tema claro mesmo se SO estiver em dark — evita inversão branco-sobre-branco */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #333333;
+    --background: #ffffff;
+  }
+  html { color-scheme: light; }
+}
+
 body {
-  background: #ffffff;
-  color: var(--color-ink);
+  background: var(--background);
+  color: var(--foreground);
   font-family: var(--font-sans);
 }
 

@@ -36,8 +36,7 @@ export function RevealGroup({
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+      animate="visible"
       variants={variants}
       className={className}
     >
@@ -78,8 +77,7 @@ export function Reveal({
   return (
     <MTag
       initial={initial}
-      whileInView={animate}
-      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+      animate={animate}
       transition={{
         duration: shouldReduceMotion ? 0.3 : duration,
         delay,
