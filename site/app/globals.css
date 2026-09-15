@@ -12,6 +12,7 @@
   --color-ink: #333333;
   --color-line: #e6eaf0;
   --color-sand: #c9a96a;
+  /* PRÓXIMO PASSO — paleta: avaliar acento orgânico/quente (ex: terracota #C17A5A ou verde-oliva #7A7F4D) ao lado de navy/dourado para tirar cara de dashboard fintech e aproximar de saúde humanizada */
 
   --ease-motion: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-quint: cubic-bezier(0.22, 1, 0.36, 1);
@@ -392,12 +393,8 @@ body.cursor-on #cursor-dot, body.cursor-on #cursor-ring { display: block; }
 #cursor-tag.is-visible { display: block; }
 @media (prefers-reduced-motion: reduce) { #cursor-dot, #cursor-ring { display: none !important; } }
 
-/* Barra de progresso de leitura */
+/* Barra de progresso de leitura (fio lateral pontilhado removido) */
 #read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 70; transform-origin: left center; transform: scaleX(0); background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 60%, var(--color-sand) 100%); }
-
-/* Fio lateral fixo (só xl+, sem touch/reduced) */
-#thread-rail { position: fixed; top: 0; bottom: 0; left: 26px; width: 40px; z-index: 30; pointer-events: none; opacity: 0.5; }
-@media (max-width: 1279px) { #thread-rail { display: none; } }
 
 /* Jornada do paciente */
 .j-track { position: relative; }

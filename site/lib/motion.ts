@@ -159,8 +159,7 @@ export function initParallax(root: ParentNode = document) {
 
 /**
  * Jornada: cada .j-step acende ao entrar em foco; #j-fill preenche via --jp.
- * #read-progress (scaleX) + #thread-progress (dashoffset) seguem o scroll da página.
- * Tudo desligado em touch/reduced-motion (versões estáticas no CSS/HTML).
+ * #read-progress (scaleX) segue o scroll da página (fio lateral pontilhado removido).
  */
 export function initJourney(root: ParentNode = document) {
   const list = (root instanceof Document ? root : document).querySelector<HTMLElement>("#j-list");
@@ -190,26 +189,17 @@ export function initJourney(root: ParentNode = document) {
   }
 }
 
-export function initScrollChrome() {  if (REDUCED) return;
-  if (window.matchMedia("(hover: none)").matches) return;
+export function initScrollChrome() {
+  if (REDUCED) return;
   const bar = document.querySelector<HTMLElement>("#read-progress");
-  const rail = document.querySelector<SVGPathElement>("#thread-progress");
-  if (!bar && !rail) return;
-  let len = 0;
-  if (rail) {
-    len = rail.getTotalLength();
-    rail.style.strokeDasharray = String(len);
-    rail.style.strokeDashoffset = String(len);
-  }
+  if (!bar) return;
   ScrollTrigger.create({
     trigger: document.body,
     start: "top top",
     end: "bottom bottom",
     scrub: 0.4,
     onUpdate: (self) => {
-      const p = self.progress;
-      if (bar) bar.style.transform = `scaleX(${p})`;
-      if (rail) rail.style.strokeDashoffset = String(len * (1 - p));
+      bar.style.transform = `scaleX(${self.progress})`;
     },
   });
 }

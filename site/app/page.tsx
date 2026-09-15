@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeartHandshake, LayoutGrid, Stethoscope, Handshake } from "lucide-react";
-import { CONVENIOS, EXAMS, FAQ, HOURS, SITE, UNITS } from "@/lib/data";
+import { CONVENIOS, EXAMS, FAQ, HOURS, SITE } from "@/lib/data";
 import { EXAM_ICONS } from "@/lib/iconMap";
 import { IconTile } from "@/components/IconTile";
 import { Magnetic } from "@/components/Magnetic";
@@ -44,48 +44,33 @@ const PILLARS = [
 export default function Home() {
   return (
     <>
-      {/* 1 · HERO confiança imediata */}
+      {/* 1 · HERO — editorial limpo, sem card fake (coluna direita vazia para respiro até chegar foto real) */}
       <section
         className="relative overflow-hidden text-white"
-        style={{ background: "linear-gradient(135deg, #0A1830 0%, #162B4D 55%, #155e6b 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0A1830 0%, #162B4D 58%, #143a4a 100%)" }}
       >
-        <div aria-hidden="true" className="blob blob-drift bg-[#00A9C5]/20 blur-3xl" style={{ width: 520, height: 520, top: "-160px", right: "-120px" }} />
-        <div aria-hidden="true" className="blob bg-[#C9A96A]/10 blur-3xl" style={{ width: 380, height: 380, bottom: "-140px", left: "30%" }} />
-        <div className="container-site relative grid items-center gap-10 pb-24 pt-12 md:pt-16 lg:grid-cols-[1.4fr_1fr]">
-          <div data-parallax="0.08">
+        {/* textura sutil proprietária (substitui blobs abstratos genéricos) */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")"}} />
+        <div aria-hidden="true" className="pointer-events-none absolute -right-[18%] top-[-28%] h-[680px] w-[680px] rounded-full opacity-[0.07]" style={{ background: "radial-gradient(circle at 50% 50%, #00A9C5 0%, transparent 70%)" }} />
+        <div className="container-site relative grid items-center gap-10 pb-24 pt-14 md:pt-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:pb-28 lg:pt-20">
+          <div data-parallax="0.08" className="max-w-[34rem] lg:max-w-[38rem]">
             <div data-reveal="eyebrow" data-reveal-start="top 95%" className="flex flex-wrap items-center gap-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#00A9C5]">
+              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#8ecfe0]">
                 <span aria-hidden="true" className="mr-3 inline-block h-[2px] w-8 bg-[#C9A96A]" />Desde {SITE.since} · DF e MT
               </span>
               <StatusPill />
             </div>
-            <h1 data-words className="mt-4 font-heading text-5xl font-semibold leading-[1.05] md:text-6xl xl:text-[76px]">Sua saúde merece o melhor</h1>
-            <p data-reveal="hero" data-reveal-start="top 95%" className="measure mt-5 text-base leading-relaxed text-white/85 md:text-lg">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
+            <h1 data-words className="mt-4 max-w-[12ch] font-heading text-[42px] font-semibold leading-[0.98] tracking-[-0.015em] text-white md:text-[52px] lg:text-[58px] xl:text-[62px] text-balance">Sua saúde merece o melhor</h1>
+            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-5 max-w-[48ch] text-base leading-relaxed text-white/80 md:text-[17px]">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
             <div data-reveal="hero" data-reveal-start="top 95%" className="mt-8 flex flex-wrap gap-3">
               <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>
               <a href={SITE.resultadosUrl} target="_blank" rel="noreferrer" className="btn btn--ghost-light">Resultados de exames</a>
             </div>
-            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-5 text-sm text-white/70">{HOURS}</p>
+            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-6 text-sm font-medium tracking-[0.02em] text-white/60">{HOURS}</p>
           </div>
 
-          <div data-parallax="-0.1" data-reveal="hero" data-reveal-start="top 95%" className="relative min-h-[420px] overflow-hidden rounded-[28px] border border-white/15 p-6 md:p-7"
-            style={{ background: "linear-gradient(150deg, rgba(0,169,197,.35) 0%, rgba(22,43,77,.55) 60%, rgba(10,24,48,.75) 100%)", boxShadow: "0 32px 80px -24px rgba(0,0,0,.55)" }}>
-            <div aria-hidden="true" className="blob blob-drift bg-[#00A9C5]/30 blur-2xl" style={{ width: 300, height: 300, top: "-90px", right: "-70px" }} />
-            <div aria-hidden="true" className="blob bg-[#C9A96A]/20 blur-2xl" style={{ width: 220, height: 220, bottom: "20%", left: "-70px" }} />
-            <Image src="/logo.png" alt="Rede Saúde Mais" width={300} height={128} className="relative h-auto w-44 rounded-2xl bg-white/95 p-3" />
-            <div className="relative mt-5 flex flex-wrap gap-2">
-              {["Desde 2018", "11 especialidades", "Convênio e particular"].map((c) => (
-                <span key={c} className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] backdrop-blur">{c}</span>
-              ))}
-            </div>
-            <div className="relative mt-5 grid gap-2 text-sm">
-              {UNITS.map((u) => (
-                <a key={u.id} href={u.phones[0].href} target="_blank" rel="noreferrer" className="motion-micro min-h-[48px] rounded-[12px] border border-white/15 bg-white/10 px-4 py-3 backdrop-blur hover:bg-white/20">
-                  <span className="font-semibold">{u.label}</span><br /><span className="text-white/85">{u.phones[0].display} · WhatsApp</span>
-                </a>
-              ))}
-            </div>
-          </div>
+          {/* Coluna direita vazia por ora — respiro editorial até foto real de unidade/equipe em /public */}
+          <div aria-hidden="true" className="hidden min-h-[420px] lg:block" />
         </div>
       </section>
 
