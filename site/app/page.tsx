@@ -87,11 +87,13 @@ export default function Home() {
       </section>
 
       {/* 2 · PROVA DE ESCALA — bleed alternado (âncora esquerda, numeral sangrando pela esquerda) */}
-      <section className="grain relative overflow-hidden bg-[#061222] z-0 -mt-6 pt-6" style={{ background: "radial-gradient(900px 480px at 15% 0%, #1d3a68 0%, #0A1830 60%, #070f1f 100%)" }}>
-        {/* numeral “03” sangrando pela esquerda, sobrepondo hero */}
-        <Parallax offset={28} className="pointer-events-none absolute -top-8 left-[-28px] hidden select-none lg:block z-0">
-          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.10)" }}>03</span>
-        </Parallax>
+      <section className="grain relative overflow-visible bg-[#061222] z-0 -mt-6 pt-6" style={{ background: "radial-gradient(900px 480px at 15% 0%, #1d3a68 0%, #0A1830 60%, #070f1f 100%)" }}>
+        {/* numeral “03” sangrando pela esquerda, sobrepondo hero — margin negativo + z-index, não absolute solto */}
+        <div className="pointer-events-none relative z-0 hidden select-none lg:block -mb-10 ml-[-24px] w-fit" aria-hidden="true">
+          <Parallax offset={28}>
+            <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.10)" }}>03</span>
+          </Parallax>
+        </div>
         <div className="container-site relative z-[2] py-20 md:py-24">
           <Reveal>
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">
@@ -130,11 +132,13 @@ export default function Home() {
       </section>
 
       {/* 4 · ESPECIALIDADES — STICKY editorial (título fixo, lista rola ao lado) */}
-      <section className="section-rythm bg-white relative overflow-visible">
-        {/* numeral “06” sangrando pela direita, atrás da seção */}
-        <Parallax offset={24} className="pointer-events-none absolute -top-10 right-[-32px] hidden select-none lg:block z-0">
-          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[260px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.09)" }}>06</span>
-        </Parallax>
+      <section className="section-rythm bg-white relative overflow-visible z-10">
+        {/* numeral “06” sangrando pela direita, atrás da seção — margin negativo */}
+        <div className="pointer-events-none relative z-0 hidden select-none lg:block -mt-6 mr-[-24px] ml-auto w-fit -mb-8" aria-hidden="true">
+          <Parallax offset={24}>
+            <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[260px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.09)" }}>06</span>
+          </Parallax>
+        </div>
         <div className="container-site relative z-10">
           <div className="grid gap-10 lg:grid-cols-[340px_1fr] lg:gap-12">
             <div className="lg:sticky lg:top-28 lg:self-start">
@@ -154,10 +158,12 @@ export default function Home() {
       </section>
 
       {/* 5 · EXAMES — bleed alternado (âncora direita, numeral sangrando pela esquerda) */}
-      <section className="section-rythm bg-[#F2F7F9] relative overflow-hidden">
-        <Parallax offset={26} className="pointer-events-none absolute -bottom-6 left-[-28px] hidden select-none lg:block z-0">
-          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(22,43,77,0.06)" }}>10</span>
-        </Parallax>
+      <section className="section-rythm bg-[#F2F7F9] relative overflow-visible z-10">
+        <div className="pointer-events-none relative z-0 hidden select-none lg:block -mt-4 ml-[-24px] w-fit -mb-8" aria-hidden="true">
+          <Parallax offset={26}>
+            <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(22,43,77,0.06)" }}>10</span>
+          </Parallax>
+        </div>
         <div className="container-site relative z-10">
           <Reveal>
             <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Diagnóstico</p>
@@ -209,8 +215,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7 · CONVÊNIOS */}
-      <section className="section-rythm bg-white relative overflow-hidden">
+      {/* 7 · CONVÊNIOS — bleed direita */}
+      <section className="section-rythm bg-white relative overflow-visible z-10">
         <div className="container-site relative z-10">
           <Reveal>
             <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Cobertura</p>
@@ -236,13 +242,15 @@ export default function Home() {
             <Link href="/convenios" className="link-arrow mt-6">Ver lista completa <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></Link>
           </Reveal>
         </div>
-        {/* numeral “14” sangrando pela direita, sobrepondo FAQ */}
-        <Parallax offset={20} className="pointer-events-none absolute -bottom-10 right-[-20px] hidden select-none lg:block z-0">
-          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.08)" }}>14</span>
-        </Parallax>
+        {/* numeral “14” sangrando pela direita, sobrepondo FAQ — margin negativo */}
+        <div className="pointer-events-none relative z-0 hidden select-none lg:block ml-auto mr-[-24px] -mt-4 -mb-6 w-fit" aria-hidden="true">
+          <Parallax offset={20}>
+            <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.08)" }}>14</span>
+          </Parallax>
+        </div>
       </section>
 
-      {/* 8 · FAQ */}
+      {/* 8 · FAQ — lazy-mount abaixo da dobra */}
       <section className="section-rythm bg-[#F2F7F9] relative z-10">
         <div className="container-site">
           <Reveal>
@@ -258,7 +266,7 @@ export default function Home() {
 
       <CurveDivider from="#F2F7F9" to="#0A1830" />
 
-      {/* 9 · CTA FINAL */}
+      {/* 9 · CTA FINAL — lazy-mount */}
       <section className="grain relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0A1830 0%, #162B4D 60%, #155e6b 100%)" }}>
         <div className="container-site relative z-[2] py-20 text-center text-white md:py-24">
           <Reveal>
