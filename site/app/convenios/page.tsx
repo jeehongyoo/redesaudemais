@@ -8,7 +8,7 @@ export default function Page() {
     <section className="section-rythm">
       <div className="container-site">
         <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Cobertura</p>
-        <h1 data-words className="sec-title font-display text-3xl font-bold text-[#162B4D] md:text-4xl">Convênios</h1>
+        <h1 data-words className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-4xl">Convênios</h1>
         <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
         <p data-reveal="text" className="sec-sub measure text-[#333333]/80">Atendemos convênios e particular. Consulte nossos canais de atendimento para cobertura de cada plano.</p>
         <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4" style={{ gridAutoRows: "1fr" }}>

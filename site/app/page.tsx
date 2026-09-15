@@ -16,7 +16,7 @@ function Section({ eyebrow, title, sub, children, tone = "white" }: { eyebrow?: 
     <section className={`section-rythm ${tone === "surface" ? "bg-[#F2F7F9]" : ""}`}>
       <div className="container-site">
         {eyebrow && <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">{eyebrow}</p>}
-        <h2 data-reveal="title" className="sec-title font-display text-3xl font-bold text-[#162B4D] md:text-[40px]">{title}</h2>
+        <h2 data-reveal="title" className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">{title}</h2>
         <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
         {sub && <p data-reveal="text" className="sec-sub measure text-[#333333]/80">{sub}</p>}
         {children}
@@ -59,7 +59,7 @@ export default function Home() {
               </span>
               <StatusPill />
             </div>
-            <h1 data-words className="mt-4 font-display text-5xl font-bold leading-[1.05] md:text-6xl xl:text-[76px]">Sua saúde merece o melhor</h1>
+            <h1 data-words className="mt-4 font-heading text-5xl font-semibold leading-[1.05] md:text-6xl xl:text-[76px]">Sua saúde merece o melhor</h1>
             <p data-reveal="hero" data-reveal-start="top 95%" className="measure mt-5 text-base leading-relaxed text-white/85 md:text-lg">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
             <div data-reveal="hero" data-reveal-start="top 95%" className="mt-8 flex flex-wrap gap-3">
               <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>
@@ -128,7 +128,7 @@ export default function Home() {
           {EXAMS.slice(0, 6).map((e, i) => (
             <div key={e.name} data-reveal="mask" data-tilt data-reveal-i={String(i)} className={`card-premium p-7 sm:p-8 ${i === 0 ? "bento-featured sm:col-span-2 lg:col-span-2" : ""}`}>
               <IconTile Icon={EXAM_ICONS[e.name]} label={e.name} />
-              <p className={`mt-5 font-display font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}>
+              <p className={`mt-5 font-heading font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}>
                 <span className="card-title-line">{e.name}</span>
               </p>
               <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#333333]/80">{e.desc}</p>
@@ -143,13 +143,13 @@ export default function Home() {
       <section className="section-rythm">
         <div className="container-site">
           <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Nosso compromisso</p>
-          <h2 data-reveal="title" className="sec-title font-display text-3xl font-bold text-[#162B4D] md:text-[40px]">Por que a Rede Saúde Mais</h2>
+          <h2 data-reveal="title" className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Por que a Rede Saúde Mais</h2>
           <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
           <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {PILLARS.map((p, i) => (
               <div key={p.n} data-reveal="mask" data-reveal-i={String(i)} className="border-t-2 border-[#C9A96A]/60 pt-6">
-                <p aria-hidden="true" className="font-display text-sm font-semibold tracking-[0.1em] text-[#008AA1]">{p.n}</p>
-                <p className="mt-3 flex items-center gap-3 font-display text-xl font-semibold text-[#162B4D]">
+                <p aria-hidden="true" className="font-heading text-sm font-semibold tracking-[0.1em] text-[#008AA1]">{p.n}</p>
+                <p className="mt-3 flex items-center gap-3 font-heading text-xl font-semibold text-[#162B4D]">
                   <p.Icon size={24} strokeWidth={1.5} className="icon-line" aria-hidden="true" />{p.title}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-[#333333]/80">{p.desc}</p>
@@ -182,7 +182,7 @@ export default function Home() {
       <section className="section-rythm bg-[#F2F7F9]">
         <div className="container-site">
           <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Dúvidas</p>
-          <h2 data-reveal="title" className="sec-title font-display text-2xl font-bold text-[#162B4D] md:text-3xl">Perguntas frequentes</h2>
+          <h2 data-reveal="title" className="sec-title font-heading text-2xl font-semibold text-[#162B4D] md:text-3xl">Perguntas frequentes</h2>
           <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
           <div className="sec-sub" data-reveal="text" />
           <div data-reveal="card"><Faq items={FAQ} /></div>
@@ -198,7 +198,7 @@ export default function Home() {
           <div className="mt-6 flex justify-center" data-reveal="cta">
             <Image src="/logo.png" alt="Rede Saúde Mais" width={220} height={94} className="h-auto w-44 rounded-2xl bg-white/95 p-3" />
           </div>
-          <h2 data-words className="mx-auto mt-6 max-w-[20ch] font-display text-3xl font-bold md:text-[40px]">Agende sua consulta na unidade mais próxima</h2>
+          <h2 data-words className="mx-auto mt-6 max-w-[20ch] font-heading text-3xl font-semibold md:text-[40px]">Agende sua consulta na unidade mais próxima</h2>
           <p data-reveal="text" className="mx-auto mt-4 max-w-[52ch] text-white/80">Convênio e particular · {HOURS}</p>
           <div data-reveal="cta" className="mt-8 flex flex-wrap justify-center gap-3">
             <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>

@@ -13,7 +13,7 @@ export function Footer() {
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#C9A96A]">
               <span aria-hidden="true" className="inline-block h-[2px] w-8 bg-[#C9A96A]" />Desde {SITE.since}
             </p>
-            <p className="mt-3 font-display text-3xl font-semibold md:text-[40px]">Fale com a Rede Saúde Mais</p>
+            <p className="mt-3 font-heading text-3xl font-semibold md:text-[40px]">Fale com a Rede Saúde Mais</p>
           </div>
           <p className="max-w-[46ch] text-sm leading-relaxed text-white/70">{SITE.tagline} Referência em atendimento humanizado no DF e MT.</p>
         </div>
@@ -21,7 +21,7 @@ export function Footer() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: "1fr" }}>
           {UNITS.map((u) => (
             <div key={u.id} className="flex flex-col rounded-[16px] border border-white/15 bg-white/[0.07] p-6 backdrop-blur">
-              <p className="flex items-start gap-2 font-display text-lg font-semibold">
+              <p className="flex items-start gap-2 font-heading text-lg font-semibold">
                 <MapPin size={20} strokeWidth={1.5} className="mt-1 shrink-0 text-[#00A9C5]" aria-hidden="true" />{u.label}
               </p>
               <p className="mt-2 text-sm text-white/70">{u.address}</p>

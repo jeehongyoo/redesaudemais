@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -9,17 +9,17 @@ import { Cursor } from "@/components/Cursor";
 import { ScrollChrome } from "@/components/ScrollChrome";
 import { SITE } from "@/lib/data";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  variable: "--font-heading",
+  weight: ["500", "600"],
   display: "swap",
 });
 
-const display = Sora({
-  variable: "--font-display-sora",
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  variable: "--font-body",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${display.variable}`}>
+    <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col bg-white font-sans text-[#333333] antialiased">
         <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-[#162B4D] focus:px-5 focus:py-3 focus:font-semibold focus:text-white">
           Pular para o conteúdo

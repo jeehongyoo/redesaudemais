@@ -11,7 +11,7 @@ export function Journey() {
     <section className="section-rythm">
       <div className="container-site">
         <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Como funciona</p>
-        <h2 data-reveal="title" className="sec-title font-display text-3xl font-bold text-[#162B4D] md:text-[40px]">Jornada do paciente</h2>
+        <h2 data-reveal="title" className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Jornada do paciente</h2>
         <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
         <ol id="j-list" className="j-track mt-12 grid gap-10 lg:grid-cols-4 lg:gap-6" style={{ ["--jp" as string]: 0 }}>
           <span aria-hidden="true" className="j-line hidden lg:block" />
@@ -21,7 +21,7 @@ export function Journey() {
             <li key={s.n} className="j-step relative flex gap-5 lg:flex-col lg:gap-0">
               <span aria-hidden="true" className="j-dot relative z-[1]">{s.n}</span>
               <div className="lg:mt-6">
-                <p className="j-title font-display text-xl font-semibold text-[#333333]">{s.title}</p>
+                <p className="j-title font-heading text-xl font-semibold text-[#333333]">{s.title}</p>
                 <p className="mt-2 max-w-[32ch] text-sm leading-relaxed text-[#333333]/80">{s.desc}</p>
               </div>
             </li>

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-sora), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading), serif;
+  --font-display: var(--font-heading), serif;
 
   --color-brand: #00a9c5;
   --color-brand-deep: #008aa1;
@@ -48,14 +49,17 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Display sempre com line-height seguro p/ descendentes (1.1) */
-h1, h2, h3 {
-  font-family: var(--font-display);
+/* Display serif editorial — Fraunces 500/600, nunca 700 (premium/confiável) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   text-wrap: balance;
   line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-h1 { line-height: 1.08; }
+h1 { line-height: 1.08; font-weight: 600; }
+h2 { font-weight: 600; }
 
 p { text-wrap: pretty; }
 
@@ -173,8 +177,8 @@ a:hover .navlink-lines > span, a:focus-visible .navlink-lines > span { transform
   box-shadow: 0 18px 36px -20px rgba(22, 43, 77, 0.25);
 }
 .stat-card__num {
-  font-family: var(--font-display); font-size: 36px; font-weight: 500;
-  letter-spacing: -0.02em; line-height: 1.2; color: var(--c-primary);
+  font-family: var(--font-heading); font-size: 36px; font-weight: 500;
+  letter-spacing: -0.01em; line-height: 1.2; color: var(--c-primary);
   font-variant-numeric: tabular-nums;
 }
 .stat-card__label { margin-top: 14px; font-size: 14px; line-height: 1.4; color: var(--c-fg); }
@@ -258,8 +262,13 @@ a:hover .navlink-lines > span, a:focus-visible .navlink-lines > span { transform
    REDESIGN PREMIUM — editorial, bento, manifesto, micro-interações
    ============================================================= */
 
-/* Headline serifada com autoridade */
-.font-display { letter-spacing: -0.015em; }
+/* Headline serif editorial — Fraunces (alias heading) */
+.font-heading,
+.font-display { font-family: var(--font-heading); letter-spacing: -0.01em; font-weight: 500; }
+.font-display.font-semibold,
+.font-heading.font-semibold { font-weight: 600; }
+.font-display.font-bold,
+.font-heading.font-bold { font-weight: 600; } /* clamp 700→600: nunca 700 para serif */
 
 /* Card premium: gradiente sutil, borda invisível, glow da marca */
 .card-premium {
@@ -292,11 +301,11 @@ a:hover .navlink-lines > span, a:focus-visible .navlink-lines > span { transform
   .bento-featured { grid-column: span 2; }
 }
 
-/* Stats manifesto: números editoriais gigantes */
+/* Stats manifesto: números editoriais — Fraunces editorial */
 .stat-mega {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
   font-size: clamp(80px, 9vw, 118px);
   font-variant-numeric: tabular-nums;
@@ -406,7 +415,7 @@ body.cursor-on #cursor-dot, body.cursor-on #cursor-ring { display: block; }
   display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
   width: 52px; height: 52px; border-radius: 50%;
   background: #fff; border: 1.5px solid var(--c-border-strong); color: var(--c-muted);
-  font-family: var(--font-display); font-weight: 600; font-size: 15px;
+  font-family: var(--font-heading); font-weight: 600; font-size: 15px;
   transition: all 0.4s var(--ease-motion);
 }
 .j-step.is-active .j-dot { background: var(--c-primary); border-color: var(--c-primary); color: #fff; box-shadow: 0 0 0 6px rgba(0, 169, 197, 0.15); }

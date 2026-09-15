@@ -45,7 +45,7 @@ export function Explorer() {
                 className={`explorer-mini card-premium flex w-full flex-col items-start p-6 text-left sm:p-7 ${isActive ? "is-active" : ""} ${i === 0 ? "sm:col-span-2 sm:flex-row sm:items-center sm:gap-6" : ""}`}
               >
                 <IconTile Icon={Icon} label={s.name} />
-                <span className={`font-display font-semibold text-[#162B4D] ${i === 0 ? "mt-4 text-xl sm:mt-0 sm:text-2xl" : "mt-4 text-lg"}`}>
+                <span className={`font-heading font-semibold text-[#162B4D] ${i === 0 ? "mt-4 text-xl sm:mt-0 sm:text-2xl" : "mt-4 text-lg"}`}>
                   <span className="card-title-line">{s.name}</span>
                 </span>
                 <span className="mt-2 text-xs font-semibold uppercase tracking-[0.06em] text-[#008AA1] lg:hidden">
@@ -68,7 +68,7 @@ export function Explorer() {
             <span className="explorer-detail-icon inline-flex">
               <IconTile Icon={CurrentIcon} label={current.name} />
             </span>
-            <p className="mt-5 font-display text-2xl font-semibold text-[#162B4D]">{current.name}</p>
+            <p className="mt-5 font-heading text-2xl font-semibold text-[#162B4D]">{current.name}</p>
             <p className="mt-3 text-sm leading-relaxed text-[#333333]/80">{current.desc}</p>
             <Link href="/unidades" className="btn btn--primary mt-6 w-full">Agendar consulta</Link>
             <Link href="/especialidades" className="link-arrow mt-4">Todas as especialidades

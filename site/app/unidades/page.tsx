@@ -21,13 +21,13 @@ export default function Page() {
       <div aria-hidden="true" className="blob absolute rounded-full bg-[#162B4D]/10 blur-3xl" style={{ width: 420, height: 420, bottom: "-160px", left: "-120px" }} />
       <div className="container-site relative">
         <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Onde nos encontrar</p>
-        <h1 data-words className="sec-title font-display text-3xl font-bold text-[#162B4D] md:text-4xl">Unidades</h1>
+        <h1 data-words className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-4xl">Unidades</h1>
         <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
         <p data-reveal="text" className="sec-sub measure text-[#333333]/80">{HOURS}</p>
 
         {/* Prova de escala como tipo grande: só fatos do site (3 unidades, DF/MT, desde 2018) */}
         <div data-reveal="text" className="mb-10 flex flex-wrap items-end gap-x-6 gap-y-2">
-          <span aria-hidden="true" className="font-display text-[clamp(88px,12vw,150px)] font-extrabold leading-[0.9] text-[#162B4D]">03</span>
+          <span aria-hidden="true" className="font-heading text-[clamp(88px,12vw,150px)] font-semibold leading-[0.9] text-[#162B4D]">03</span>
           <p className="max-w-[30ch] pb-3 text-sm font-semibold uppercase leading-relaxed tracking-[0.06em] text-[#333333]/80">
             unidades no DF e MT · desde 2018
           </p>
@@ -38,7 +38,7 @@ export default function Page() {
             const featured = u.id === "df-riacho";
             return (
               <div key={u.id} data-reveal="card" data-tilt data-reveal-i={String(i)} className={`motion-comp glass-card relative flex flex-col overflow-hidden rounded-[16px] p-6 duration-200 hover:-translate-y-1 sm:p-7 ${ORDER[u.id]}`}>
-                <span aria-hidden="true" className="font-display pointer-events-none absolute -right-2 -top-7 select-none text-[120px] font-extrabold leading-none text-[#162B4D]/[0.07]">
+                <span aria-hidden="true" className="font-heading pointer-events-none absolute -right-2 -top-7 select-none text-[120px] font-semibold leading-none text-[#162B4D]/[0.07]">
                   {NUM[u.id]}
                 </span>
                 {/* TODO(fotos): substituir por foto real da unidade — preencher imageUrl no objeto da unidade em lib/data.ts */}
@@ -50,7 +50,7 @@ export default function Page() {
                     <span className="px-4 text-center text-xs font-semibold uppercase tracking-[0.06em] opacity-60">Foto da unidade em breve</span>
                   </div>
                 )}
-                <p className={`mt-6 font-display font-extrabold leading-[1.05] text-[#162B4D] ${featured ? "text-[30px] md:text-[36px]" : "text-[26px] md:text-[30px]"}`}>{u.label}</p>
+                <p className={`mt-6 font-heading font-semibold leading-[1.05] text-[#162B4D] ${featured ? "text-[30px] md:text-[36px]" : "text-[26px] md:text-[30px]"}`}>{u.label}</p>
                 <p className="mt-3 text-sm text-[#333333]/80 [text-wrap:pretty]">{u.address}</p>
                 <div className="mt-4 space-y-2 text-[15px] font-semibold tabular-nums tracking-[0.03em]">
                   {u.phones.map((p) => (
