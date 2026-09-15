@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Camera } from "lucide-react";
 import { HOURS, UNITS } from "@/lib/data";
 import { Magnetic } from "@/components/Magnetic";
 
@@ -41,13 +40,12 @@ export default function Page() {
                 <span aria-hidden="true" className="font-heading pointer-events-none absolute -right-2 -top-7 select-none text-[120px] font-semibold leading-none text-[#162B4D]/[0.07]">
                   {NUM[u.id]}
                 </span>
-                {/* TODO(fotos): substituir por foto real da unidade — preencher imageUrl no objeto da unidade em lib/data.ts */}
                 {u.imageUrl ? (
                   <Image src={u.imageUrl} alt={`Fachada da ${u.label}`} width={640} height={480} className="aspect-[4/3] w-full rounded-[12px] object-cover" />
                 ) : (
-                  <div aria-hidden="true" className="photo-ph">
-                    <Camera size={30} strokeWidth={1.5} opacity={0.35} />
-                    <span className="px-4 text-center text-xs font-semibold uppercase tracking-[0.06em] opacity-60">Foto da unidade em breve</span>
+                  <div aria-hidden="true" className="relative flex aspect-[4/3] items-center justify-end overflow-hidden rounded-[12px] border border-[#E6EAF0]/60 bg-white px-4">
+                    <span className="font-heading text-[148px] leading-none tracking-[-0.04em] select-none sm:text-[168px]" style={{ color: "transparent", WebkitTextStroke: "1.4px rgba(22,43,77,0.10)" }}>{NUM[u.id]}</span>
+                    <span className="absolute bottom-3 right-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">UNIDADE {NUM[u.id]}</span>
                   </div>
                 )}
                 <p className={`mt-6 font-heading font-semibold leading-[1.05] text-[#162B4D] ${featured ? "text-[30px] md:text-[36px]" : "text-[26px] md:text-[30px]"}`}>{u.label}</p>

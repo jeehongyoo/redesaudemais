@@ -52,16 +52,18 @@ export default function Home() {
         {/* textura sutil proprietária (substitui blobs abstratos genéricos) */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")"}} />
         <div aria-hidden="true" className="pointer-events-none absolute -right-[18%] top-[-28%] h-[680px] w-[680px] rounded-full opacity-[0.07]" style={{ background: "radial-gradient(circle at 50% 50%, #00A9C5 0%, transparent 70%)" }} />
-        <div className="container-site relative grid items-center gap-10 pb-24 pt-14 md:pt-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:pb-28 lg:pt-20">
-          <div data-parallax="0.08" className="max-w-[34rem] lg:max-w-[38rem]">
-            <div data-reveal="eyebrow" data-reveal-start="top 95%" className="flex flex-wrap items-center gap-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#8ecfe0]">
+        <div className="container-site relative grid items-center gap-10 pb-24 pt-14 md:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-28 lg:pt-20">
+          <div data-parallax="0.08" className="relative max-w-[34rem] lg:max-w-[36rem]">
+            <div data-reveal="eyebrow" data-reveal-start="top 95%" className="relative flex flex-wrap items-center gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#8ecfe0]">
                 <span aria-hidden="true" className="mr-3 inline-block h-[2px] w-8 bg-[#C9A96A]" />Desde {SITE.since} · DF e MT
               </span>
               <StatusPill />
             </div>
-            <h1 data-words className="mt-4 max-w-[12ch] font-heading text-[42px] font-semibold leading-[0.98] tracking-[-0.015em] text-white md:text-[52px] lg:text-[58px] xl:text-[62px] text-balance">Sua saúde merece o melhor</h1>
-            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-5 max-w-[48ch] text-base leading-relaxed text-white/80 md:text-[17px]">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
+            {/* filete dourado vertical — vocabulário próprio da marca, substitui linha pontilhada genérica */}
+            <div aria-hidden="true" className="pointer-events-none absolute left-[15px] top-[28px] hidden h-[72px] w-px bg-[#C9A96A]/45 lg:block" />
+            <h1 data-words className="mt-6 max-w-[12ch] font-heading text-[42px] font-semibold leading-[0.98] tracking-[-0.015em] text-white md:text-[52px] lg:text-[56px] xl:text-[60px] text-balance">Sua saúde merece o melhor</h1>
+            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-5 max-w-[46ch] text-base leading-relaxed text-white/80 md:text-[17px]">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
             <div data-reveal="hero" data-reveal-start="top 95%" className="mt-8 flex flex-wrap gap-3">
               <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>
               <a href={SITE.resultadosUrl} target="_blank" rel="noreferrer" className="btn btn--ghost-light">Resultados de exames</a>
@@ -69,8 +71,13 @@ export default function Home() {
             <p data-reveal="hero" data-reveal-start="top 95%" className="mt-6 text-sm font-medium tracking-[0.02em] text-white/60">{HOURS}</p>
           </div>
 
-          {/* Coluna direita vazia por ora — respiro editorial até foto real de unidade/equipe em /public */}
-          <div aria-hidden="true" className="hidden min-h-[420px] lg:block" />
+          {/* Coluna direita — numeral editorial como imagem (ocupa vazio com intenção, não decoração genérica) */}
+          <div aria-hidden="true" className="hidden select-none lg:flex lg:min-h-[440px] lg:items-center lg:justify-end lg:overflow-hidden">
+            <div className="relative translate-x-6 xl:translate-x-2">
+              <span className="font-heading text-[240px] leading-[0.82] tracking-[-0.05em] xl:text-[300px]" style={{ color: "transparent", WebkitTextStroke: "1.2px rgba(201,169,106,0.22)", paintOrder: "stroke" }}>08</span>
+              <span className="absolute bottom-3 right-[6%] text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">ANOS DE ATUAÇÃO</span>
+            </div>
+          </div>
         </div>
       </section>
 
