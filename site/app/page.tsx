@@ -10,22 +10,24 @@ import { Journey } from "@/components/Journey";
 import { Explorer } from "@/components/Explorer";
 import { CurveDivider, KnotMark } from "@/components/Dividers";
 import { Faq } from "@/components/Faq";
+import { Reveal, RevealGroup } from "@/components/Reveal";
+import { Parallax } from "@/components/Parallax";
 
 function Section({ eyebrow, title, sub, children, tone = "white" }: { eyebrow?: string; title: string; sub?: string; children: React.ReactNode; tone?: "white" | "surface" }) {
   return (
     <section className={`section-rythm ${tone === "surface" ? "bg-[#F2F7F9]" : ""}`}>
       <div className="container-site">
-        {eyebrow && <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">{eyebrow}</p>}
-        <h2 data-reveal="title" className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">{title}</h2>
-        <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
-        {sub && <p data-reveal="text" className="sec-sub measure text-[#333333]/80">{sub}</p>}
+        <Reveal>
+          {eyebrow && <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">{eyebrow}</p>}
+          <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">{title}</h2>
+          <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+          {sub && <p className="sec-sub measure text-[#333333]/80">{sub}</p>}
+        </Reveal>
         {children}
       </div>
     </section>
   );
 }
-
-const card = "motion-comp card-premium p-6 duration-200 sm:p-7";
 
 const STATS = [
   { value: 11, label: "Especialidades médicas" },
@@ -44,60 +46,67 @@ const PILLARS = [
 export default function Home() {
   return (
     <>
-      {/* 1 · HERO — editorial limpo, sem card fake (coluna direita vazia para respiro até chegar foto real) */}
+      {/* 1 · HERO — editorial, numeral como imagem, sem CLS acima da dobra */}
       <section
-        className="relative overflow-hidden text-white"
+        className="relative overflow-hidden bg-[#0A1830] text-white"
         style={{ background: "linear-gradient(135deg, #0A1830 0%, #162B4D 58%, #143a4a 100%)" }}
       >
-        {/* textura sutil proprietária (substitui blobs abstratos genéricos) */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")"}} />
-        <div aria-hidden="true" className="pointer-events-none absolute -right-[18%] top-[-28%] h-[680px] w-[680px] rounded-full opacity-[0.07]" style={{ background: "radial-gradient(circle at 50% 50%, #00A9C5 0%, transparent 70%)" }} />
+        <div aria-hidden="true" className="pointer-events-none absolute -right-[18%] top-[-28%] h-[680px] w-[680px] rounded-full opacity-[0.06]" style={{ background: "radial-gradient(circle at 50% 50%, #00A9C5 0%, transparent 70%)" }} />
         <div className="container-site relative grid items-center gap-10 pb-24 pt-14 md:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-28 lg:pt-20">
-          <div data-parallax="0.08" className="relative max-w-[34rem] lg:max-w-[36rem]">
-            <div data-reveal="eyebrow" data-reveal-start="top 95%" className="relative flex flex-wrap items-center gap-3">
+          <div className="relative max-w-[34rem] lg:max-w-[36rem]">
+            <div className="relative flex flex-wrap items-center gap-3">
               <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#8ecfe0]">
                 <span aria-hidden="true" className="mr-3 inline-block h-[2px] w-8 bg-[#C9A96A]" />Desde {SITE.since} · DF e MT
               </span>
               <StatusPill />
             </div>
-            {/* filete dourado vertical — vocabulário próprio da marca, substitui linha pontilhada genérica */}
-            <div aria-hidden="true" className="pointer-events-none absolute left-[15px] top-[28px] hidden h-[72px] w-px bg-[#C9A96A]/45 lg:block" />
-            <h1 data-words className="mt-6 max-w-[12ch] font-heading text-[42px] font-semibold leading-[0.98] tracking-[-0.015em] text-white md:text-[52px] lg:text-[56px] xl:text-[60px] text-balance">Sua saúde merece o melhor</h1>
-            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-5 max-w-[46ch] text-base leading-relaxed text-white/80 md:text-[17px]">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
-            <div data-reveal="hero" data-reveal-start="top 95%" className="mt-8 flex flex-wrap gap-3">
+            {/* filete dourado vertical — vocabulário próprio, com parallax sutil */}
+            <Parallax offset={18} className="pointer-events-none absolute left-[15px] top-[28px] hidden h-[72px] w-px lg:block">
+              <div className="h-full w-px bg-[#C9A96A]/45" />
+            </Parallax>
+            <h1 className="mt-6 max-w-[12ch] font-heading text-[42px] font-semibold leading-[0.98] tracking-[-0.015em] text-white md:text-[52px] lg:text-[56px] xl:text-[60px] text-balance">
+              Sua saúde merece o melhor
+            </h1>
+            <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-white/80 md:text-[17px]">{SITE.tagline} Consultas, exames e especialidades em um único espaço, com atendimento humanizado.</p>
+            <div className="mt-8 flex flex-wrap gap-3">
               <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>
               <a href={SITE.resultadosUrl} target="_blank" rel="noreferrer" className="btn btn--ghost-light">Resultados de exames</a>
             </div>
-            <p data-reveal="hero" data-reveal-start="top 95%" className="mt-6 text-sm font-medium tracking-[0.02em] text-white/60">{HOURS}</p>
+            <p className="mt-6 text-sm font-medium tracking-[0.02em] text-white/60">{HOURS}</p>
           </div>
 
-          {/* Coluna direita — numeral editorial como imagem (ocupa vazio com intenção, não decoração genérica) */}
-          <div aria-hidden="true" className="hidden select-none lg:flex lg:min-h-[440px] lg:items-center lg:justify-end lg:overflow-hidden">
-            <div className="relative translate-x-6 xl:translate-x-2">
+          {/* Coluna direita — numeral editorial como imagem, bleed com sobreposição */}
+          <div aria-hidden="true" className="hidden select-none lg:flex lg:min-h-[440px] lg:items-center lg:justify-end lg:overflow-visible relative z-10 -mb-10">
+            <Parallax offset={32} className="relative translate-x-6 xl:translate-x-2">
               <span className="font-heading text-[240px] leading-[0.82] tracking-[-0.05em] xl:text-[300px]" style={{ color: "transparent", WebkitTextStroke: "1.2px rgba(201,169,106,0.22)", paintOrder: "stroke" }}>08</span>
               <span className="absolute bottom-3 right-[6%] text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">ANOS DE ATUAÇÃO</span>
-            </div>
+            </Parallax>
           </div>
         </div>
       </section>
 
-      {/* 2 · PROVA DE ESCALA placar vivo */}
-      <section className="grain relative overflow-hidden" style={{ background: "radial-gradient(900px 480px at 15% 0%, #1d3a68 0%, #0A1830 60%, #070f1f 100%)" }}>
+      {/* 2 · PROVA DE ESCALA — bleed alternado (âncora esquerda, numeral sangrando pela esquerda) */}
+      <section className="grain relative overflow-hidden bg-[#061222] z-0 -mt-6 pt-6" style={{ background: "radial-gradient(900px 480px at 15% 0%, #1d3a68 0%, #0A1830 60%, #070f1f 100%)" }}>
+        {/* numeral “03” sangrando pela esquerda, sobrepondo hero */}
+        <Parallax offset={28} className="pointer-events-none absolute -top-8 left-[-28px] hidden select-none lg:block z-0">
+          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.10)" }}>03</span>
+        </Parallax>
         <div className="container-site relative z-[2] py-20 md:py-24">
-          <p data-reveal="eyebrow" className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#C9A96A]">
-            <span aria-hidden="true" className="inline-block h-[2px] w-8 bg-[#C9A96A]" />Em números
-          </p>
+          <Reveal>
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">
+              <span aria-hidden="true" className="inline-block h-[2px] w-8 bg-[#C9A96A]" />Em números
+            </p>
+          </Reveal>
           <div className="relative mt-10">
-            <svg data-reveal="draw-scrub" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" className="absolute -top-8 left-0 hidden h-[60px] w-full lg:block">
-              <path d="M0,40 C200,10 400,10 600,32 C800,54 1000,50 1200,24" fill="none" stroke="#00A9C5" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-              <path d="M0,40 C200,10 400,10 600,32 C800,54 1000,50 1200,24" fill="none" stroke="#C9A96A" strokeWidth="1" strokeLinecap="round" opacity="0.35" transform="translate(0,8)" />
-            </svg>
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
               {STATS.map((s, i) => (
-                <div key={s.label} data-reveal="mask" data-reveal-i={String(i)} className="border-t border-white/15 pt-6">
-                  <p className={`stat-mega ${i % 2 ? "stat-mega-accent" : ""}`}><span data-count={s.value}>{s.value}</span></p>
-                  <p className="mt-4 text-sm font-medium uppercase tracking-[0.06em] text-white/70">{s.label}</p>
-                </div>
+                <Reveal key={s.label} delay={i * 0.1} y={20} duration={0.6}>
+                  <div className="border-t border-white/15 pt-6">
+                    <p className="stat-mega"><span data-count={s.value}>{s.value}</span></p>
+                    <p className="mt-4 text-sm font-medium uppercase tracking-[0.06em] text-white/70">{s.label}</p>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -106,96 +115,166 @@ export default function Home() {
 
       <CurveDivider from="#070f1f" to="#ffffff" />
 
-      {/* 3 · JORNADA DO PACIENTE */}
-      <Journey />
-
-      {/* 4 · ESPECIALIDADES explorer */}
-      <Section eyebrow="Cuidado completo" title="Especialidades" sub="Consultas com especialistas · convênio e particular.">
-        <Explorer />
-      </Section>
-
-      {/* 5 · EXAMES bento técnico */}
-      <Section eyebrow="Diagnóstico" title="Exames" sub="Do check-up ao diagnóstico avançado." tone="surface">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: "1fr" }}>
-          {EXAMS.slice(0, 6).map((e, i) => (
-            <div key={e.name} data-reveal="mask" data-tilt data-reveal-i={String(i)} className={`card-premium p-7 sm:p-8 ${i === 0 ? "bento-featured sm:col-span-2 lg:col-span-2" : ""}`}>
-              <IconTile Icon={EXAM_ICONS[e.name]} label={e.name} />
-              <p className={`mt-5 font-heading font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}>
-                <span className="card-title-line">{e.name}</span>
-              </p>
-              <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#333333]/80">{e.desc}</p>
-              {i === 0 && <span aria-hidden="true" className="mt-5 inline-block h-[3px] w-10 rounded-full bg-[#C9A96A]" />}
-            </div>
-          ))}
+      {/* 3 · JORNADA DO PACIENTE — com reveal */}
+      <section className="section-rythm">
+        <div className="container-site">
+          <Reveal>
+            <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Como funciona</p>
+            <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Jornada do paciente</h2>
+            <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Journey />
+          </Reveal>
         </div>
-        <Link href="/exames" className="link-arrow mt-6">Ver todos os 10 exames <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></Link>
-      </Section>
+      </section>
+
+      {/* 4 · ESPECIALIDADES — STICKY editorial (título fixo, lista rola ao lado) */}
+      <section className="section-rythm bg-white relative overflow-visible">
+        {/* numeral “06” sangrando pela direita, atrás da seção */}
+        <Parallax offset={24} className="pointer-events-none absolute -top-10 right-[-32px] hidden select-none lg:block z-0">
+          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[260px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.09)" }}>06</span>
+        </Parallax>
+        <div className="container-site relative z-10">
+          <div className="grid gap-10 lg:grid-cols-[340px_1fr] lg:gap-12">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <Reveal>
+                <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Cuidado completo</p>
+                <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Especialidades</h2>
+                <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+                <p className="sec-sub measure text-[#333333]/80">Consultas com especialistas · convênio e particular.</p>
+                <Link href="/especialidades" className="link-arrow hidden lg:inline-flex">Ver todas as especialidades <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></Link>
+              </Reveal>
+            </div>
+            <Reveal delay={0.12}>
+              <Explorer />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 5 · EXAMES — bleed alternado (âncora direita, numeral sangrando pela esquerda) */}
+      <section className="section-rythm bg-[#F2F7F9] relative overflow-hidden">
+        <Parallax offset={26} className="pointer-events-none absolute -bottom-6 left-[-28px] hidden select-none lg:block z-0">
+          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(22,43,77,0.06)" }}>10</span>
+        </Parallax>
+        <div className="container-site relative z-10">
+          <Reveal>
+            <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Diagnóstico</p>
+            <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Exames</h2>
+            <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+            <p className="sec-sub measure text-[#333333]/80">Do check-up ao diagnóstico avançado.</p>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: "1fr" } as React.CSSProperties}>
+            {EXAMS.slice(0, 6).map((e, i) => (
+              <Reveal key={e.name} delay={i * 0.08} y={20} duration={0.55}>
+                <div className={`card-premium p-7 sm:p-8 ${i === 0 ? "bento-featured sm:col-span-2 lg:col-span-2" : ""}`}>
+                  <IconTile Icon={EXAM_ICONS[e.name]} label={e.name} />
+                  <p className={`mt-5 font-heading font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}>
+                    <span className="card-title-line">{e.name}</span>
+                  </p>
+                  <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#333333]/80">{e.desc}</p>
+                  {i === 0 && <span aria-hidden="true" className="mt-5 inline-block h-[3px] w-10 rounded-full bg-[#C9A96A]" />}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.2}>
+            <Link href="/exames" className="link-arrow mt-6">Ver todos os 10 exames <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></Link>
+          </Reveal>
+        </div>
+      </section>
 
       {/* 6 · COMPROMISSO pilares */}
       <section className="section-rythm">
         <div className="container-site">
-          <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Nosso compromisso</p>
-          <h2 data-reveal="title" className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Por que a Rede Saúde Mais</h2>
-          <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+          <Reveal>
+            <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Nosso compromisso</p>
+            <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Por que a Rede Saúde Mais</h2>
+            <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+          </Reveal>
           <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {PILLARS.map((p, i) => (
-              <div key={p.n} data-reveal="mask" data-reveal-i={String(i)} className="border-t-2 border-[#C9A96A]/60 pt-6">
-                <p aria-hidden="true" className="font-heading text-sm font-semibold tracking-[0.1em] text-[#008AA1]">{p.n}</p>
-                <p className="mt-3 flex items-center gap-3 font-heading text-xl font-semibold text-[#162B4D]">
-                  <p.Icon size={24} strokeWidth={1.5} className="icon-line" aria-hidden="true" />{p.title}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-[#333333]/80">{p.desc}</p>
-              </div>
+              <Reveal key={p.n} delay={i * 0.08} y={20} duration={0.55}>
+                <div className="border-t-2 border-[#C9A96A]/60 pt-6">
+                  <p aria-hidden="true" className="font-heading text-sm font-semibold tracking-[0.12em] text-[#008AA1]">{p.n}</p>
+                  <p className="mt-3 flex items-center gap-3 font-heading text-xl font-semibold text-[#162B4D]">
+                    <p.Icon size={24} strokeWidth={1.5} className="icon-line" aria-hidden="true" />{p.title}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#333333]/80">{p.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* 7 · CONVÊNIOS */}
-      <Section eyebrow="Cobertura" title="Convênios" sub="Atendemos convênios e particular.">
-        <div className="marquee" data-reveal="text">
-          <div className="marquee__track">
-            {CONVENIOS.map((c) => (
-              <div key={c.name} title={c.name} className="marquee__item">
-                <Image src={c.img} alt={c.name} width={150} height={54} className="object-contain" />
+      <section className="section-rythm bg-white relative overflow-hidden">
+        <div className="container-site relative z-10">
+          <Reveal>
+            <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Cobertura</p>
+            <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Convênios</h2>
+            <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+            <p className="sec-sub measure text-[#333333]/80">Atendemos convênios e particular.</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="marquee">
+              <div className="marquee__track">
+                {CONVENIOS.map((c) => (
+                  <div key={c.name} title={c.name} className="marquee__item">
+                    <Image src={c.img} alt={c.name} width={150} height={54} className="object-contain" />
+                  </div>
+                ))}
+                {CONVENIOS.map((c) => (
+                  <div key={c.name + "-dup"} title={c.name} aria-hidden="true" className="marquee__item">
+                    <Image src={c.img} alt="" width={150} height={54} className="object-contain" />
+                  </div>
+                ))}
               </div>
-            ))}
-            {CONVENIOS.map((c) => (
-              <div key={c.name + "-dup"} title={c.name} aria-hidden="true" className="marquee__item">
-                <Image src={c.img} alt="" width={150} height={54} className="object-contain" />
-              </div>
-            ))}
-          </div>
+            </div>
+            <Link href="/convenios" className="link-arrow mt-6">Ver lista completa <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></Link>
+          </Reveal>
         </div>
-        <Link href="/convenios" className="link-arrow mt-6">Ver lista completa <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></Link>
-      </Section>
+        {/* numeral “14” sangrando pela direita, sobrepondo FAQ */}
+        <Parallax offset={20} className="pointer-events-none absolute -bottom-10 right-[-20px] hidden select-none lg:block z-0">
+          <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.08)" }}>14</span>
+        </Parallax>
+      </section>
 
-      {/* 8 · FAQ remoção de objeção */}
-      <section className="section-rythm bg-[#F2F7F9]">
+      {/* 8 · FAQ */}
+      <section className="section-rythm bg-[#F2F7F9] relative z-10">
         <div className="container-site">
-          <p data-reveal="eyebrow" className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.08em] text-[#008AA1]">Dúvidas</p>
-          <h2 data-reveal="title" className="sec-title font-heading text-2xl font-semibold text-[#162B4D] md:text-3xl">Perguntas frequentes</h2>
-          <div aria-hidden="true" data-reveal="cta" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
-          <div className="sec-sub" data-reveal="text" />
-          <div data-reveal="card"><Faq items={FAQ} /></div>
+          <Reveal>
+            <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Dúvidas</p>
+            <h2 className="sec-title font-heading text-2xl font-semibold text-[#162B4D] md:text-3xl">Perguntas frequentes</h2>
+            <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Faq items={FAQ} />
+          </Reveal>
         </div>
       </section>
 
       <CurveDivider from="#F2F7F9" to="#0A1830" />
 
-      {/* 9 · CTA FINAL fio convergindo ao logo */}
+      {/* 9 · CTA FINAL */}
       <section className="grain relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0A1830 0%, #162B4D 60%, #155e6b 100%)" }}>
         <div className="container-site relative z-[2] py-20 text-center text-white md:py-24">
-          <div className="flex justify-center" data-reveal="draw"><KnotMark /></div>
-          <div className="mt-6 flex justify-center" data-reveal="cta">
-            <Image src="/logo.png" alt="Rede Saúde Mais" width={220} height={94} className="h-auto w-44 rounded-2xl bg-white/95 p-3" />
-          </div>
-          <h2 data-words className="mx-auto mt-6 max-w-[20ch] font-heading text-3xl font-semibold md:text-[40px]">Agende sua consulta na unidade mais próxima</h2>
-          <p data-reveal="text" className="mx-auto mt-4 max-w-[52ch] text-white/80">Convênio e particular · {HOURS}</p>
-          <div data-reveal="cta" className="mt-8 flex flex-wrap justify-center gap-3">
-            <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>
-            <a href={SITE.resultadosUrl} target="_blank" rel="noreferrer" className="btn btn--ghost-light">Resultados de exames</a>
-          </div>
+          <Reveal>
+            <div className="flex justify-center"><KnotMark /></div>
+            <div className="mt-6 flex justify-center">
+              <Image src="/logo.png" alt="Rede Saúde Mais" width={220} height={94} className="h-auto w-44 rounded-2xl bg-white/95 p-3" />
+            </div>
+            <h2 className="mx-auto mt-6 max-w-[20ch] font-heading text-3xl font-semibold md:text-[40px] text-balance">Agende sua consulta na unidade mais próxima</h2>
+            <p className="mx-auto mt-4 max-w-[52ch] text-white/80">Convênio e particular · {HOURS}</p>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Magnetic><Link href="/unidades" className="btn btn--primary">Ver unidades e agendar</Link></Magnetic>
+              <a href={SITE.resultadosUrl} target="_blank" rel="noreferrer" className="btn btn--ghost-light">Resultados de exames</a>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

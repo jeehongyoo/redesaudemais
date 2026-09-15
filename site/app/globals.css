@@ -50,13 +50,15 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Display serif editorial — Fraunces 500/600, nunca 700 (premium/confiável) */
+/* Display serif editorial — Fraunces 500/600 com eixos autorais (menos template IA/Lovable) */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-wrap: balance;
   line-height: 1.12;
   font-weight: 500;
   letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  font-optical-sizing: auto;
 }
 
 h1 { line-height: 1.08; font-weight: 600; }
@@ -263,9 +265,9 @@ a:hover .navlink-lines > span, a:focus-visible .navlink-lines > span { transform
    REDESIGN PREMIUM — editorial, bento, manifesto, micro-interações
    ============================================================= */
 
-/* Headline serif editorial — Fraunces (alias heading) */
+/* Headline serif editorial — Fraunces (alias heading) com variação autoral */
 .font-heading,
-.font-display { font-family: var(--font-heading); letter-spacing: -0.01em; font-weight: 500; }
+.font-display { font-family: var(--font-heading); letter-spacing: -0.01em; font-weight: 500; font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1; font-optical-sizing: auto; }
 .font-display.font-semibold,
 .font-heading.font-semibold { font-weight: 600; }
 .font-display.font-bold,
