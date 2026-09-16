@@ -76,12 +76,21 @@ export default function Home() {
             <p className="mt-6 text-sm font-medium tracking-[0.02em] text-white/60">{HOURS}</p>
           </div>
 
-          {/* Coluna direita — numeral editorial como imagem, bleed com sobreposição */}
-          <div aria-hidden="true" className="hidden select-none lg:flex lg:min-h-[440px] lg:items-center lg:justify-end lg:overflow-visible relative z-10 -mb-10">
-            <Parallax offset={64} className="relative translate-x-6 xl:translate-x-2">
-              <span className="font-heading text-[240px] leading-[0.82] tracking-[-0.05em] xl:text-[300px]" style={{ color: "transparent", WebkitTextStroke: "1.2px rgba(201,169,106,0.22)", paintOrder: "stroke" }}>08</span>
-              <span className="absolute bottom-3 right-[6%] text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">ANOS DE ATUAÇÃO</span>
-            </Parallax>
+          {/* Coluna direita — foto real da clínica (hero, acima da dobra: priority) */}
+          <div className="relative z-10 hidden lg:block -mb-10">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-[28px] border border-white/15 shadow-[0_32px_80px_-24px_rgba(0,0,0,.55)]">
+              <Image
+                src="/hero-home.webp"
+                alt="Equipe da Rede Saúde Mais em atendimento humanizado"
+                width={1600}
+                height={2000}
+                priority
+                sizes="(max-width: 1024px) 100vw, 440px"
+                className="h-full w-full object-cover"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0A1830]/70 via-transparent to-transparent" />
+              <span className="absolute bottom-4 left-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">08 anos de atuação</span>
+            </div>
           </div>
         </div>
       </section>
@@ -117,19 +126,10 @@ export default function Home() {
 
       <CurveDivider from="#070f1f" to="#ffffff" />
 
-      {/* 3 · JORNADA DO PACIENTE — com reveal */}
-      <section className="section-rythm">
-        <div className="container-site">
-          <Reveal>
-            <p className="sec-eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-[#008AA1]">Como funciona</p>
-            <h2 className="sec-title font-heading text-3xl font-semibold text-[#162B4D] md:text-[40px]">Jornada do paciente</h2>
-            <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Journey />
-          </Reveal>
-        </div>
-      </section>
+      {/* 3 · JORNADA DO PACIENTE — com reveal (header + timeline + foto dentro do componente) */}
+      <Reveal delay={0.1}>
+        <Journey />
+      </Reveal>
 
       {/* 4 · ESPECIALIDADES — STICKY editorial (título fixo, lista rola ao lado) */}
       <section className="section-rythm bg-white relative overflow-visible z-10">

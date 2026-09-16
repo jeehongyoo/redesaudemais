@@ -41,7 +41,7 @@ export default function Page() {
                   {NUM[u.id]}
                 </span>
                 {u.imageUrl ? (
-                  <Image src={u.imageUrl} alt={`Fachada da ${u.label}`} width={640} height={480} className="aspect-[4/3] w-full rounded-[12px] object-cover" />
+                  <Image src={u.imageUrl} alt={`Fachada da ${u.label}`} width={1200} height={900} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="aspect-[4/3] w-full rounded-[12px] object-cover" />
                 ) : (
                   <div aria-hidden="true" className="relative flex aspect-[4/3] items-center justify-end overflow-hidden rounded-[12px] border border-[#E6EAF0]/60 bg-white px-4">
                     <span className="font-heading text-[148px] leading-none tracking-[-0.04em] select-none sm:text-[168px]" style={{ color: "transparent", WebkitTextStroke: "1.4px rgba(22,43,77,0.10)" }}>{NUM[u.id]}</span>

@@ -11,7 +11,7 @@ export type Unit = {
   label: string;
   address: string;
   city: string;
-  /** Foto real da unidade. Vazio = renderiza placeholder até a foto chegar. */
+  /** Foto real da unidade (WebP 1200x900). Vazio = renderiza placeholder tipográfico. */
   imageUrl?: string;
   phones: { display: string; href: string; whatsapp: boolean }[];
   instagram: string;
@@ -27,6 +27,7 @@ export const UNITS: Unit[] = [
     label: "Unidade Mato Grosso I",
     address: "Rua Vereadora Maria da Glória Favero, N 586 – MT",
     city: "Mato Grosso",
+    imageUrl: "/unidades/unidade-mato-grosso-i.webp",
     phones: [
       { display: "(66) 99902-9531", href: "https://wa.me/5566999029531", whatsapp: true },
     ],
@@ -39,6 +40,7 @@ export const UNITS: Unit[] = [
     label: "Unidade Riacho Fundo I – DF",
     address: "CLN 05 Bloco G Lotes 1/4 – Riacho Fundo 1 – DF",
     city: "Riacho Fundo I – DF",
+    imageUrl: "/unidades/unidade-riacho-fundo-i.webp",
     phones: [
       { display: "(61) 99695-2647", href: "https://wa.me/5561996952647", whatsapp: true },
       { display: "(61) 3264-6081", href: "tel:+556132646081", whatsapp: false },
@@ -52,6 +54,7 @@ export const UNITS: Unit[] = [
     label: "Unidade Primavera do Leste – MT",
     address: "Av. David Riva, 1100 – Jardim Riva, Primavera do Leste – MT",
     city: "Primavera do Leste – MT",
+    imageUrl: "/unidades/unidade-primavera-do-leste.webp",
     phones: [
       { display: "(66) 99937-2528", href: "https://wa.me/5566999372528", whatsapp: true },
     ],

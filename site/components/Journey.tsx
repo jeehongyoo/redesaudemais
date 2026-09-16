@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const STEPS = [
   { n: "01", title: "Agendamento", desc: "Pré-agendamento pelo WhatsApp." },
   { n: "02", title: "Consulta", desc: "Consulta com especialistas." },
@@ -5,7 +7,7 @@ const STEPS = [
   { n: "04", title: "Retorno", desc: "Retorno em até 30 dias no particular." },
 ];
 
-/** Jornada do paciente: timeline horizontal (desktop) / vertical (mobile). */
+/** Jornada do paciente: timeline horizontal (desktop) / vertical (mobile) + foto real. */
 export function Journey() {
   return (
     <section className="section-rythm">
@@ -27,6 +29,17 @@ export function Journey() {
             </li>
           ))}
         </ol>
+
+        <div className="relative mt-12 overflow-hidden rounded-[20px] border border-[#E6EAF0]">
+          <Image
+            src="/jornada-paciente.webp"
+            alt="Acolhimento ao paciente na jornada de atendimento da Rede Saúde Mais"
+            width={1600}
+            height={1200}
+            sizes="100vw"
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
