@@ -33,7 +33,7 @@ export function Header() {
     >
       <div className="container-site flex h-full items-center justify-between gap-4">
         <Link href="/" className="flex min-h-[48px] items-center" onClick={() => setOpen(false)} aria-label="Rede Saúde Mais — início">
-          <Image src="/logo.png" alt="Rede Saúde Mais" width={170} height={72} priority className="h-12 w-auto" />
+          <Image src="/logo.webp" alt="Rede Saúde Mais" width={1600} height={661} priority className="h-12 w-auto" />
         </Link>
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-1 text-sm font-medium lg:flex">

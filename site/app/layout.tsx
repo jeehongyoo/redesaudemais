@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -28,6 +28,19 @@ export const metadata: Metadata = {
   description: "Rede de especialidades médicas: consultas, exames e atendimento humanizado desde 2018. Unidades no DF e MT. Convênios e particular.",
   metadataBase: new URL("https://redesaudemais.com"),
   openGraph: { title: SITE.name, description: SITE.tagline, locale: "pt_BR", type: "website" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0B4679",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

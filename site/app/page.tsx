@@ -271,7 +271,7 @@ export default function Home() {
           <Reveal>
             <div className="flex justify-center"><KnotMark /></div>
             <div className="mt-6 flex justify-center">
-              <Image src="/logo.png" alt="Rede Saúde Mais" width={220} height={94} className="h-auto w-44 rounded-2xl bg-white/95 p-3" />
+              <Image src="/logo.webp" alt="Rede Saúde Mais" width={1600} height={661} className="h-auto w-44 rounded-2xl bg-white/95 p-3" />
             </div>
             <h2 className="mx-auto mt-6 max-w-[20ch] font-heading text-3xl font-semibold md:text-[40px] text-balance">Agende sua consulta na unidade mais próxima</h2>
             <p className="mx-auto mt-4 max-w-[52ch] text-white/80">Convênio e particular · {HOURS}</p>
