@@ -26,13 +26,13 @@ export function Explorer() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-      <div className="grid gap-5 sm:grid-cols-2" style={{ gridAutoRows: "1fr" }}>
+      <div className="grid gap-5 sm:grid-cols-2" style={{ gridAutoRows: "1fr", alignItems: "stretch" }}>
         {SPECIALTIES.slice(0, 6).map((s, i) => {
           const Icon = SPECIALTY_ICONS[s.slug];
           const isActive = i === active;
           const isOpen = openMobile === i;
           return (
-            <div key={s.slug}>
+            <div key={s.slug} className="h-full">
               <button
                 type="button"
                 data-reveal="mask"
@@ -42,10 +42,10 @@ export function Explorer() {
                 onMouseEnter={() => select(i)}
                 onFocus={() => select(i)}
                 onClick={() => setOpenMobile(isOpen ? null : i)}
-                className={`explorer-mini card-premium flex w-full flex-col items-start p-6 text-left sm:p-7 ${isActive ? "is-active" : ""} ${i === 0 ? "sm:col-span-2 sm:flex-row sm:items-center sm:gap-6" : ""}`}
+                className={`explorer-mini card-premium flex h-full w-full flex-col items-center justify-center p-6 text-center sm:p-7 ${isActive ? "is-active" : ""}`}
               >
                 <IconTile Icon={Icon} label={s.name} />
-                <span className={`font-heading font-semibold text-[#162B4D] ${i === 0 ? "mt-4 text-xl sm:mt-0 sm:text-2xl" : "mt-4 text-lg"}`}>
+                <span className="mt-4 font-heading text-lg font-semibold leading-snug text-[#162B4D]">
                   <span className="card-title-line">{s.name}</span>
                 </span>
                 <span className="mt-2 text-xs font-semibold uppercase tracking-[0.06em] text-[#008AA1] lg:hidden">

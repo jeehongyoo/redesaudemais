@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useReducedMotion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion, useInView, useSpring } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 export function Parallax({
@@ -40,7 +40,10 @@ export function Parallax({
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? [0, 0] : [offset, -offset]);
+  // Easing de desaceleração (ease-out) via spring — não movimento linear constante
+  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 22, mass: 0.6 });
+
+  const y = useTransform(smooth, [0, 1], shouldReduceMotion ? [0, 0] : [offset, -offset]);
 
   if (shouldReduceMotion) {
     return (

@@ -171,16 +171,21 @@ export default function Home() {
             <div aria-hidden="true" className="sec-divider h-[3px] w-12 rounded-full bg-[#00A9C5]" />
             <p className="sec-sub measure text-[#333333]/80">Do check-up ao diagnóstico avançado.</p>
           </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: "1fr" } as React.CSSProperties}>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ gridAutoRows: "1fr", alignItems: "stretch" } as React.CSSProperties}>
             {EXAMS.slice(0, 6).map((e, i) => (
-              <Reveal key={e.name} delay={i * 0.08} y={20} duration={0.55}>
-                <div className={`card-premium p-7 sm:p-8 ${i === 0 ? "bento-featured sm:col-span-2 lg:col-span-2" : ""}`}>
+              <Reveal key={e.name} delay={i * 0.08} y={20} duration={0.55} className="h-full">
+                <div className={`card-premium flex h-full flex-col p-7 sm:p-8 ${i === 0 ? "bento-featured sm:col-span-2 lg:col-span-2" : ""}`}>
                   <IconTile Icon={EXAM_ICONS[e.name]} label={e.name} />
-                  <p className={`mt-5 font-heading font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}>
+                  <p className={`mt-5 flex min-h-[3.5rem] items-center font-heading font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}>
                     <span className="card-title-line">{e.name}</span>
                   </p>
                   <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#333333]/80">{e.desc}</p>
-                  {i === 0 && <span aria-hidden="true" className="mt-5 inline-block h-[3px] w-10 rounded-full bg-[#C9A96A]" />}
+                  {i === 0 && (
+                    <>
+                      <span className="flex-1" aria-hidden="true" />
+                      <span aria-hidden="true" className="mt-6 inline-block h-[3px] w-10 rounded-full bg-[#C9A96A]" />
+                    </>
+                  )}
                 </div>
               </Reveal>
             ))}
