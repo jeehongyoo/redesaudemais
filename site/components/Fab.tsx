@@ -19,7 +19,7 @@ export function Fab() {
       href="/unidades"
       aria-label="Agendar pelo WhatsApp — ver unidades"
       title="Agendar pelo WhatsApp"
-      className={`motion-comp group fixed z-40 flex min-h-[48px] items-center gap-2 rounded-full bg-[#00A9C5] py-3 pl-4 pr-4 font-semibold text-white hover:bg-[#008AA1] fab-breathe ${
+      className={`motion-comp group fixed z-30 flex min-h-[48px] items-center gap-2 rounded-full bg-[#00A9C5] py-3 pl-4 pr-4 font-semibold text-white hover:bg-[#008AA1] fab-breathe ${
         hidden ? "pointer-events-none scale-90 opacity-0" : "scale-100 opacity-100"
       }`}
       style={{ insetInlineEnd: "clamp(16px, 2vw, 28px)", bottom: "calc(20px + env(safe-area-inset-bottom))" }}

@@ -62,7 +62,7 @@ export default function Home() {
               <StatusPill />
             </div>
             {/* filete dourado vertical — vocabulário próprio, com parallax sutil */}
-            <Parallax offset={18} className="pointer-events-none absolute left-[15px] top-[28px] hidden h-[72px] w-px lg:block">
+            <Parallax offset={48} className="pointer-events-none absolute left-[15px] top-[28px] hidden h-[72px] w-px lg:block">
               <div className="h-full w-px bg-[#C9A96A]/45" />
             </Parallax>
             <h1 className="mt-6 max-w-[12ch] font-heading text-[42px] font-semibold leading-[0.98] tracking-[-0.015em] text-white md:text-[52px] lg:text-[56px] xl:text-[60px] text-balance">
@@ -78,7 +78,7 @@ export default function Home() {
 
           {/* Coluna direita — numeral editorial como imagem, bleed com sobreposição */}
           <div aria-hidden="true" className="hidden select-none lg:flex lg:min-h-[440px] lg:items-center lg:justify-end lg:overflow-visible relative z-10 -mb-10">
-            <Parallax offset={32} className="relative translate-x-6 xl:translate-x-2">
+            <Parallax offset={64} className="relative translate-x-6 xl:translate-x-2">
               <span className="font-heading text-[240px] leading-[0.82] tracking-[-0.05em] xl:text-[300px]" style={{ color: "transparent", WebkitTextStroke: "1.2px rgba(201,169,106,0.22)", paintOrder: "stroke" }}>08</span>
               <span className="absolute bottom-3 right-[6%] text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C9A96A]">ANOS DE ATUAÇÃO</span>
             </Parallax>
@@ -90,7 +90,7 @@ export default function Home() {
       <section className="grain relative overflow-visible bg-[#061222] z-0 -mt-6 pt-6" style={{ background: "radial-gradient(900px 480px at 15% 0%, #1d3a68 0%, #0A1830 60%, #070f1f 100%)" }}>
         {/* numeral “03” sangrando pela esquerda, sobrepondo hero — margin negativo + z-index, não absolute solto */}
         <div className="pointer-events-none relative z-0 hidden select-none lg:block -mb-10 ml-[-24px] w-fit" aria-hidden="true">
-          <Parallax offset={28}>
+          <Parallax offset={48}>
             <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.10)" }}>03</span>
           </Parallax>
         </div>
@@ -135,7 +135,7 @@ export default function Home() {
       <section className="section-rythm bg-white relative overflow-visible z-10">
         {/* numeral “06” sangrando pela direita, atrás da seção — margin negativo */}
         <div className="pointer-events-none relative z-0 hidden select-none lg:block -mt-6 mr-[-24px] ml-auto w-fit -mb-8" aria-hidden="true">
-          <Parallax offset={24}>
+          <Parallax offset={48}>
             <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[260px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.09)" }}>06</span>
           </Parallax>
         </div>
@@ -160,7 +160,7 @@ export default function Home() {
       {/* 5 · EXAMES — bleed alternado (âncora direita, numeral sangrando pela esquerda) */}
       <section className="section-rythm bg-[#F2F7F9] relative overflow-visible z-10">
         <div className="pointer-events-none relative z-0 hidden select-none lg:block -mt-4 ml-[-24px] w-fit -mb-8" aria-hidden="true">
-          <Parallax offset={26}>
+          <Parallax offset={48}>
             <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(22,43,77,0.06)" }}>10</span>
           </Parallax>
         </div>
@@ -180,12 +180,6 @@ export default function Home() {
                     <span className="card-title-line">{e.name}</span>
                   </p>
                   <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#333333]/80">{e.desc}</p>
-                  {i === 0 && (
-                    <>
-                      <span className="flex-1" aria-hidden="true" />
-                      <span aria-hidden="true" className="mt-6 inline-block h-[3px] w-10 rounded-full bg-[#C9A96A]" />
-                    </>
-                  )}
                 </div>
               </Reveal>
             ))}
@@ -249,7 +243,7 @@ export default function Home() {
         </div>
         {/* numeral “14” sangrando pela direita, sobrepondo FAQ — margin negativo */}
         <div className="pointer-events-none relative z-0 hidden select-none lg:block ml-auto mr-[-24px] -mt-4 -mb-6 w-fit" aria-hidden="true">
-          <Parallax offset={20}>
+          <Parallax offset={48}>
             <span className="font-heading text-[200px] leading-none tracking-[-0.05em] xl:text-[240px]" style={{ color: "transparent", WebkitTextStroke: "1px rgba(201,169,106,0.08)" }}>14</span>
           </Parallax>
         </div>

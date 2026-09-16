@@ -20,12 +20,6 @@ export default function Page() {
               <IconTile Icon={SPECIALTY_ICONS[s.slug]} label={s.name} />
               <p className={`mt-5 flex min-h-[3.5rem] items-center font-heading font-semibold text-[#162B4D] ${i === 0 ? "text-2xl md:text-[28px]" : "text-lg"}`}><span className="card-title-line">{s.name}</span></p>
               <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-[#333333]/80">{s.desc}</p>
-              {i === 0 && (
-                <>
-                  <span className="flex-1" aria-hidden="true" />
-                  <span aria-hidden="true" className="mt-6 inline-block h-[3px] w-10 rounded-full bg-[#C9A96A]" />
-                </>
-              )}
             </div>
           ))}
         </div>

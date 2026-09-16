@@ -432,8 +432,8 @@ body.cursor-on #cursor-dot, body.cursor-on #cursor-ring { display: block; }
 .j-step.is-active .j-dot { background: var(--c-primary); border-color: var(--c-primary); color: #fff; box-shadow: 0 0 0 6px rgba(0, 169, 197, 0.15); }
 .j-step.is-active .j-title { color: var(--c-primary); }
 
-/* Explorer de especialidades: painel fixo desktop */
-.explorer-panel { position: sticky; top: calc(var(--header-h) + 32px); }
+/* Explorer de especialidades: painel fixo desktop — z-index acima do FAB (z-30) p/ nunca cobrir CTA */
+.explorer-panel { position: sticky; top: calc(var(--header-h) + 32px); z-index: 40; }
 .explorer-mini { transition: border-color 0.25s ease, background 0.25s ease, transform 0.22s var(--ease-motion); }
 .explorer-mini.is-active { border-color: rgba(0, 169, 197, 0.6); background: linear-gradient(160deg, #fff, #eef7f9); }
 .explorer-detail-icon { transition: transform 0.35s var(--ease-motion); }

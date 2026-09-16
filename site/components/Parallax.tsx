@@ -5,12 +5,12 @@ import { useRef, useEffect, useState } from "react";
 
 export function Parallax({
   children,
-  offset = 32,
+  offset = 48,
   className,
   style,
 }: {
   children: React.ReactNode;
-  offset?: number; // 20-40px amplitude sutil
+  offset?: number; // amplitude do translateY (px), perceptível para numerais de fundo
   className?: string;
   style?: React.CSSProperties;
 }) {
@@ -40,8 +40,8 @@ export function Parallax({
     offset: ["start end", "end start"],
   });
 
-  // Easing de desaceleração (ease-out) via spring — não movimento linear constante
-  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 22, mass: 0.6 });
+  // Easing de desaceleração (ease-out) via spring com damping alto — não linear
+  const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
 
   const y = useTransform(smooth, [0, 1], shouldReduceMotion ? [0, 0] : [offset, -offset]);
 
